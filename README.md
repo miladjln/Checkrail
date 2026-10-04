@@ -54,6 +54,8 @@ As Large Language Models (LLMs) and autonomous agent frameworks (**Kilo**, **Cla
 │    (docs/agent/SUMMARY.md)    │             │   (docs/agent/protocol.md)    │
 │  Domain context, Stack & Flow │             │   Deep workflows & fallback   │
 └───────────────────────────────┘             └───────────────────────────────┘
+                │                                             │
+                └──────────────────────┬──────────────────────┘
                                        │
 ┌──────────────────────────────────────┴──────────────────────────────────────┐
 │                    Automated Governance & Verification Harness              │
@@ -137,6 +139,8 @@ Whenever repository files or modules change:
 ```bash
 # Update descriptions in scripts/file-descriptions.txt, then:
 bash scripts/sync-docs.sh
+
+# Stage the regenerated index
 git add docs/file-index.md
 ```
 
@@ -156,7 +160,7 @@ bash scripts/quality-gates.sh
 | Script | Function | Key Flags |
 |---|---|---|
 | `scripts/doctor.sh` | Health check for environment, dependencies, CRLF, and pack integrity. | None |
-| `scripts/quality-gates.sh` | Comprehensive 9-tier automated quality and security gates. | `--staged-only`, `--fast`, `--allow-guardrail`, `--strict-versions` |
+| `scripts/quality-gates.sh` | Comprehensive 9-tier automated quality and security gates. | `--staged-only`, `--fast`, `--allow-guardrail`, `--ack-new-guardrail`, `--quiet`, `--strict-versions` |
 | `scripts/sync-docs.sh` | Deterministic documentation indexer and drift detector. | `--check`, `--compact`, `--full` |
 
 ---
