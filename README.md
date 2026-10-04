@@ -6,14 +6,22 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![CI / Quality Gates](https://github.com/miladjln/checkrail/actions/workflows/quality-gates.yml/badge.svg)](https://github.com/miladjln/checkrail/actions)
-[![Bash 4.4+](https://img.shields.io/badge/Bash-4.4%2B-green.svg)](https://www.gnu.org/software/bash/)
+[![Bash 3.2+](https://img.shields.io/badge/Bash-3.2%2B-green.svg)](https://www.gnu.org/software/bash/)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](https://www.python.org/)
 [![Security: Gitleaks](https://img.shields.io/badge/Security-Gitleaks-brightgreen.svg)](https://github.com/gitleaks/gitleaks)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-*An enterprise-grade, academically grounded framework for deterministic orchestrations, token-efficient context hierarchies, and automated multi-tier security verification for LLM-based autonomous software engineering.*
+*An open-source verification harness and hierarchical context scaffolding designed to enforce deterministic boundaries and multi-tier quality gates for autonomous AI coding agents.*
 
 </div>
+
+> **Disclaimer:** Checkrail is an independent open-source engineering project. It is not affiliated with, endorsed by, or associated with any other project, commercial platform, or trademark holder.
+
+---
+
+## 📌 Project Status
+
+**Experimental (pre-1.0)**. Checkrail is under active development. Gate specifications, file formats, and runtime interfaces may evolve across releases. Use in production environments at your own discretion. No benchmark results have been published yet for token optimization claims.
 
 ---
 
@@ -27,7 +35,7 @@ As Large Language Models (LLMs) and autonomous agent frameworks (**Kilo**, **Cla
 4. **Repository Documentation Drift**: Autonomous changes break manual architectural maps, invalidating agent grounding on subsequent turns.
 5. **Session Amnesia & State Loss**: Fragmented state transitions between multi-turn or multi-agent worktree handovers.
 
-**Checkrail** introduces a **multi-tiered, deterministic verification and context-management harness** that enforces formal safety boundaries, minimizes token overhead by up to ~75%, and guarantees cryptographic and architectural compliance before code reaches review.
+**Checkrail** introduces a **multi-tiered, deterministic verification and context-management harness** that enforces formal safety boundaries and is architecturally designed to mitigate context degradation and enforce policy and quality gate compliance before code reaches review.
 
 ---
 
@@ -49,7 +57,7 @@ As Large Language Models (LLMs) and autonomous agent frameworks (**Kilo**, **Cla
                                        │
 ┌──────────────────────────────────────┴──────────────────────────────────────┐
 │                    Automated Governance & Verification Harness              │
-│  ├── 8-Tier Quality Verification (scripts/quality-gates.sh)                 │
+│  ├── 9-Tier Quality Verification (scripts/quality-gates.sh)                 │
 │  ├── Zero-Drift Compact Indexing (scripts/sync-docs.sh)                     │
 │  ├── Sandboxed Permission Rules (kilo.jsonc)                                │
 │  ├── Formal Empirical Audit Matrix (docs/agent/bootstrap-audit.md)          │
@@ -63,8 +71,8 @@ Checkrail discards monolithic prompts in favor of an indexed 3-layer architectur
 - **Layer 1 (`docs/agent/SUMMARY.md`)**: High-level domain, stack specifications, and pipeline models.
 - **Layer 2 (`docs/agent/protocol.md`)**: Deep execution workflows, loaded strictly when blocking ambiguities arise.
 
-### 2. 🛡️ 8-Tier Quality Verification Gates (`scripts/quality-gates.sh`)
-Every agent and developer change is passed through an unyielding 8-tier verification pipeline:
+### 2. 🛡️ 9-Tier Quality Verification Gates (`scripts/quality-gates.sh`)
+Every agent and developer change is passed through a deterministic nine-tier verification pipeline (Gate 0 – Gate 8):
 * **Gate 0: Tooling Prerequisite Check** — Verifies major/minor version compliance (`.tool-versions`).
 * **Gate 1: Base Branch & Differential Scoping** — Isolates target diffs and prevents unanchored commits.
 * **Gate 2: Clean Tree & Working-Copy Integrity** — Validates staging consistency and rejects untracked drift.
@@ -77,7 +85,7 @@ Every agent and developer change is passed through an unyielding 8-tier verifica
 
 ### 3. 📑 Zero-Drift Repository Indexing (`scripts/sync-docs.sh`)
 - Generates a compact, deterministic inventory in `docs/file-index.md` from `scripts/file-descriptions.txt`.
-- Provides complete structural grounding to agents within a bounded token budget ($\le 20\text{ KB}$).
+- Provides structural grounding to agents within a bounded token budget (≤ 20 KB, enforced by `sync-docs.sh`).
 
 ### 4. 🔒 Engine Sandbox & Permission Map (`kilo.jsonc`)
 - Strict deny/ask rules for destructive actions (`rm -rf`, raw `.env` reading, unconstrained shell execution).
@@ -87,14 +95,23 @@ Every agent and developer change is passed through an unyielding 8-tier verifica
 
 ---
 
-## 📊 Empirical Verification & Audit (F-01 to F-24)
+## 📊 Bootstrap Audit Record (F-01 to F-24)
 
-Checkrail incorporates an empirical test suite and failure-mode analysis documented in [`docs/agent/bootstrap-audit.md`](docs/agent/bootstrap-audit.md), addressing 24 critical real-world edge cases including:
-- Subshell environment isolation and memory leaks.
-- Cross-platform POSIX compatibility (Bash 3.2+ fallback to 4.4+).
-- Symlink traversal attack prevention in documentation generators.
+Checkrail documents a failure-mode analysis and remediation record in [`docs/agent/bootstrap-audit.md`](docs/agent/bootstrap-audit.md), covering 24 hardened-bootstrap findings and their verified fixes, including:
+- Subshell variable-inheritance failures in child processes.
+- Cross-platform Bash compatibility, including macOS's default Bash 3.2.
+- Path-traversal and symlink-overwrite defenses.
 - TOCTOU (Time-of-Check to Time-of-Use) atomic file operations.
 - Windows execution alias stub handling in CI environments.
+
+---
+
+## ⚖️ Honest Limitations
+
+1. **Not a Formal Proof**: Checkrail enforces deterministic static checks, shell validation, and git boundaries. It does not mathematically prove the runtime semantic correctness of generated application code.
+2. **Token Metrics Are Architectural**: Token efficiency gains stem from structured context separation (L0/L1/L2) avoiding full-tree reads. Empirical benchmark quantification is ongoing and not yet published.
+3. **POSIX / Linux Centric**: Checkrail is built primarily for Bash-compatible environments (Linux, macOS, WSL2). Native Windows environments without a POSIX layer are not supported.
+4. **No Semantic Logic Guarantee**: The gates verify syntax, diff scope, secret absence, and structure—not whether the business logic meets user intent.
 
 ---
 
@@ -128,7 +145,7 @@ git add docs/file-index.md
 # Fast-tier gate for staged changes (Pre-Commit)
 bash scripts/quality-gates.sh --staged-only --fast
 
-# Complete 8-tier verification suite (CI Equivalent)
+# Complete 9-tier verification suite (CI Equivalent)
 bash scripts/quality-gates.sh
 ```
 
@@ -139,7 +156,7 @@ bash scripts/quality-gates.sh
 | Script | Function | Key Flags |
 |---|---|---|
 | `scripts/doctor.sh` | Health check for environment, dependencies, CRLF, and pack integrity. | None |
-| `scripts/quality-gates.sh` | Comprehensive 8-tier automated quality and security gates. | `--staged-only`, `--fast`, `--allow-guardrail`, `--strict-versions` |
+| `scripts/quality-gates.sh` | Comprehensive 9-tier automated quality and security gates. | `--staged-only`, `--fast`, `--allow-guardrail`, `--strict-versions` |
 | `scripts/sync-docs.sh` | Deterministic documentation indexer and drift detector. | `--check`, `--compact`, `--full` |
 
 ---
@@ -166,7 +183,7 @@ checkrail/
 ├── scripts/
 │   ├── doctor.sh                   # Environment Diagnostic & Health Script
 │   ├── file-descriptions.txt       # Canonical File Description Register
-│   ├── quality-gates.sh            # 8-Tier Security & Quality Gate Harness
+│   ├── quality-gates.sh            # 9-Tier Security & Quality Gate Harness
 │   └── sync-docs.sh                # Zero-Drift Documentation Synchronizer
 ├── .gitattributes                  # LF Enforcement & Normalization Policy
 ├── .gitignore                      # Comprehensive VCS Ignore Register
@@ -194,7 +211,7 @@ If you incorporate **Checkrail** in academic papers, research benchmarks, or ind
   title = {Checkrail: Deterministic Quality Gates and Hierarchical Context Scaffolding for AI Coding Agents},
   year = {2026},
   url = {https://github.com/miladjln/checkrail},
-  version = {1.0.0}
+  version = {0.1.0}
 }
 ```
 
