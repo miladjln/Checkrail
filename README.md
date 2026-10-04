@@ -6,16 +6,16 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![CI / Quality Gates](https://github.com/miladjln/checkrail/actions/workflows/quality-gates.yml/badge.svg)](https://github.com/miladjln/checkrail/actions)
-[![Bash 3.2+](https://img.shields.io/badge/Bash-3.2%2B-green.svg)](https://www.gnu.org/software/bash/)
+[![Bash 4.4+](https://img.shields.io/badge/Bash-4.4%2B-green.svg)](https://www.gnu.org/software/bash/)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](https://www.python.org/)
 [![Security: Gitleaks](https://img.shields.io/badge/Security-Gitleaks-brightgreen.svg)](https://github.com/gitleaks/gitleaks)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 *An open-source verification harness and hierarchical context scaffolding designed to enforce deterministic boundaries and multi-tier quality gates for autonomous AI coding agents.*
 
-</div>
-
 > **Disclaimer:** Checkrail is an independent open-source engineering project. It is not affiliated with, endorsed by, or associated with any other project, commercial platform, or trademark holder.
+
+</div>
 
 ---
 
@@ -44,7 +44,7 @@ As Large Language Models (LLMs) and autonomous agent frameworks (**Kilo**, **Cla
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                       Layer 0: AGENTS.md (Root Invariants)                  │
-│           Deterministic trigger routing • Zero token wastage • Lean L0      │
+│           Deterministic trigger routing • Lean L0 context routing           │
 └──────────────────────────────────────┬──────────────────────────────────────┘
                                        │
                 ┌──────────────────────┴──────────────────────┐
