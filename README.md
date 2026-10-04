@@ -1,11 +1,11 @@
 <div align="center">
 
-# 🛡️ AgentGuard
+# 🛡️ Checkrail
 
-### Deterministic Governance, Security Guardrails & Token-Optimized Quality Gates for Autonomous AI Coding Agents
+### Deterministic Quality Gates & Hierarchical Context Scaffolding for AI Coding Agents
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![CI / Quality Gates](https://github.com/miladjln/agent-guard/actions/workflows/quality-gates.yml/badge.svg)](https://github.com/miladjln/agent-guard/actions)
+[![CI / Quality Gates](https://github.com/miladjln/checkrail/actions/workflows/quality-gates.yml/badge.svg)](https://github.com/miladjln/checkrail/actions)
 [![Bash 4.4+](https://img.shields.io/badge/Bash-4.4%2B-green.svg)](https://www.gnu.org/software/bash/)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](https://www.python.org/)
 [![Security: Gitleaks](https://img.shields.io/badge/Security-Gitleaks-brightgreen.svg)](https://github.com/gitleaks/gitleaks)
@@ -27,7 +27,7 @@ As Large Language Models (LLMs) and autonomous agent frameworks (**Kilo**, **Cla
 4. **Repository Documentation Drift**: Autonomous changes break manual architectural maps, invalidating agent grounding on subsequent turns.
 5. **Session Amnesia & State Loss**: Fragmented state transitions between multi-turn or multi-agent worktree handovers.
 
-**AgentGuard** introduces a **multi-tiered, deterministic verification and context-management harness** that enforces formal safety boundaries, minimizes token overhead by up to ~75%, and guarantees cryptographic and architectural compliance before code reaches review.
+**Checkrail** introduces a **multi-tiered, deterministic verification and context-management harness** that enforces formal safety boundaries, minimizes token overhead by up to ~75%, and guarantees cryptographic and architectural compliance before code reaches review.
 
 ---
 
@@ -58,7 +58,7 @@ As Large Language Models (LLMs) and autonomous agent frameworks (**Kilo**, **Cla
 ```
 
 ### 1. ⚡ Hierarchical Context Minimization
-AgentGuard discards monolithic prompts in favor of an indexed 3-layer architecture:
+Checkrail discards monolithic prompts in favor of an indexed 3-layer architecture:
 - **Layer 0 (`AGENTS.md`)**: Always-on routing table. Directs agents to exact files without recursive exploration.
 - **Layer 1 (`docs/agent/SUMMARY.md`)**: High-level domain, stack specifications, and pipeline models.
 - **Layer 2 (`docs/agent/protocol.md`)**: Deep execution workflows, loaded strictly when blocking ambiguities arise.
@@ -89,7 +89,7 @@ Every agent and developer change is passed through an unyielding 8-tier verifica
 
 ## 📊 Empirical Verification & Audit (F-01 to F-24)
 
-AgentGuard incorporates an empirical test suite and failure-mode analysis documented in [`docs/agent/bootstrap-audit.md`](docs/agent/bootstrap-audit.md), addressing 24 critical real-world edge cases including:
+Checkrail incorporates an empirical test suite and failure-mode analysis documented in [`docs/agent/bootstrap-audit.md`](docs/agent/bootstrap-audit.md), addressing 24 critical real-world edge cases including:
 - Subshell environment isolation and memory leaks.
 - Cross-platform POSIX compatibility (Bash 3.2+ fallback to 4.4+).
 - Symlink traversal attack prevention in documentation generators.
@@ -102,8 +102,8 @@ AgentGuard incorporates an empirical test suite and failure-mode analysis docume
 
 ### 1. Installation & Environment Verification
 ```bash
-git clone https://github.com/miladjln/agent-guard.git
-cd agent-guard
+git clone https://github.com/miladjln/checkrail.git
+cd checkrail
 
 # Run full diagnostic verification
 bash scripts/doctor.sh
@@ -147,7 +147,7 @@ bash scripts/quality-gates.sh
 ## 📂 Repository Topology
 
 ```text
-agent-guard/
+checkrail/
 ├── .github/
 │   ├── workflows/
 │   │   └── quality-gates.yml       # Production CI Verification Pipeline
@@ -186,14 +186,14 @@ agent-guard/
 
 ## 📑 Citation & Academic Reference
 
-If you incorporate **AgentGuard** in academic papers, research benchmarks, or industrial autonomous frameworks, please cite:
+If you incorporate **Checkrail** in academic papers, research benchmarks, or industrial autonomous frameworks, please cite:
 
 ```bibtex
-@software{jalilian2026agentguard,
+@software{jalilian2026checkrail,
   author = {Jalilian, Seyed Milad},
-  title = {AgentGuard: Deterministic Governance, Security Guardrails and Token Optimization for Autonomous AI Coding Agents},
+  title = {Checkrail: Deterministic Quality Gates and Hierarchical Context Scaffolding for AI Coding Agents},
   year = {2026},
-  url = {https://github.com/miladjln/agent-guard},
+  url = {https://github.com/miladjln/checkrail},
   version = {1.0.0}
 }
 ```

@@ -4,11 +4,11 @@ authors:
   - family-names: "Jalilian"
     given-names: "Seyed Milad"
     orcid: "https://orcid.org/0009-0000-0000-0000"
-title: "AgentGuard: Deterministic Governance, Quality Gates, and Token Optimization Framework for Autonomous AI Coding Agents"
+title: "Checkrail: Deterministic Quality Gates & Hierarchical Context Scaffolding for AI Coding Agents"
 version: 1.0.0
 date-released: 2026-10-04
-url: "https://github.com/miladjln/agent-guard"
-repository-code: "https://github.com/miladjln/agent-guard"
+url: "https://github.com/miladjln/checkrail"
+repository-code: "https://github.com/miladjln/checkrail"
 keywords:
   - "autonomous-agents"
   - "ai-safety"
