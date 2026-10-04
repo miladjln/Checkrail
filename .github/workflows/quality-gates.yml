@@ -1,0 +1,68 @@
+name: quality-gates
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches: [main, master]
+
+concurrency:
+  group: gates-${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CI: "true"
+      INDEX_MODE: compact
+      STRICT_VERSIONS: "true"
+      TERRAFORM_VALIDATE: "true"
+      BASE_BRANCH: ${{ github.event.pull_request.base.ref || github.event.merge_group.base_sha || github.event.before }}
+      GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+      GITHUB_EVENT_NAME: ${{ github.event_name }}
+      GUARDRAIL_MODIFICATION_AUTHORIZED: ${{ vars.GUARDRAIL_MODIFICATION_AUTHORIZED || 'false' }}
+      NEW_GUARDRAIL_INTRODUCTION_ACK: ${{ vars.NEW_GUARDRAIL_INTRODUCTION_ACK || 'false' }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('.tool-versions', '**/requirements*.txt', '**/pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install Python QA tools
+        run: python -m pip install --quiet --upgrade pip ruff pytest
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.11"
+          terraform_wrapper: false
+
+      - name: Install gitleaks
+        env:
+          GITLEAKS_VERSION: "8.18.4"
+        run: |
+          set -euo pipefail
+          curl -sSfL -o /tmp/gitleaks.tgz \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          tar -xz -C /usr/local/bin -f /tmp/gitleaks.tgz gitleaks
+          gitleaks version
+
+      - name: Doctor (pack integrity)
+        run: bash scripts/doctor.sh
+
+      - name: Run quality gates
+        run: bash scripts/quality-gates.sh

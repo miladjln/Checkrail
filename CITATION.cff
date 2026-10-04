@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this framework or reference its governance methodologies in academic research or production systems, please cite it as below."
+authors:
+  - family-names: "Jalilian"
+    given-names: "Seyed Milad"
+    orcid: "https://orcid.org/0009-0000-0000-0000"
+title: "AgentGuard: Deterministic Governance, Quality Gates, and Token Optimization Framework for Autonomous AI Coding Agents"
+version: 1.0.0
+date-released: 2026-10-04
+url: "https://github.com/miladjln/agent-guard"
+repository-code: "https://github.com/miladjln/agent-guard"
+keywords:
+  - "autonomous-agents"
+  - "ai-safety"
+  - "software-engineering"
+  - "llm-governance"
+  - "quality-gates"
+  - "security-guardrails"
+  - "context-optimization"
+license: MIT

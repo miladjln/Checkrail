@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "kilo.jsonc": "jsonc",
+    ".kilocodeignore": "ignore"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "AGENTS.md": "kilo.jsonc, .kilocodeignore",
+    "SUMMARY.md": "protocol.md, HANDOVER.md",
+    "sync-docs.sh": "file-descriptions.txt, quality-gates.sh"
+  },
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe"
+}

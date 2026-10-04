@@ -1,0 +1,37 @@
+name: Bug report
+description: Create a report to help us improve Agent Opt
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us what you expected to happen.
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce this?
+      placeholder: |
+        1. Run 'bash scripts/doctor.sh'
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment details
+      description: OS version, Bash version, Git version, Python version, etc.
+      placeholder: |
+        - OS: Ubuntu 24.04 / macOS 14 / Windows 11 (WSL2/Git Bash)
+        - Bash version: 5.2.x
+        - Git version: 2.45.x
+    validations:
+      required: false

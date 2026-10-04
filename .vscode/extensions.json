@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "kilocode.kilo-code",
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "hashicorp.terraform"
+  ]
+}

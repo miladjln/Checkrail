@@ -1,0 +1,17 @@
+repos:
+  - repo: local
+    hooks:
+      - id: kilo-quality-gates
+        name: Kilo quality gates (fast)
+        language: system
+        entry: bash scripts/quality-gates.sh
+        args: [--staged-only, --fast, --quiet]
+        pass_filenames: false
+        always_run: true
+
+  # Optional: real local secret scanning via gitleaks (replaces the bash fallback
+  # in Gate 8). Uncomment to let pre-commit manage the gitleaks binary for you.
+  # - repo: https://github.com/gitleaks/gitleaks
+  #   rev: v8.18.4
+  #   hooks:
+  #     - id: gitleaks
